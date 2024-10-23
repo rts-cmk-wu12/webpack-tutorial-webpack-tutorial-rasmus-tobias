@@ -38,38 +38,29 @@
     </section>
     <hr>
     <section>
-      <h2>Step 2 - file structure</h2>
+      <h2>Step 2. Creation of needed folders</h2>
       <pre>
-          <code>
-            root-folder/
-            │
-            ├── dist/
-            │ └── #generated files
-            │
-            ├── node_modules/ #generated 
-            │
-            ├── public/ #should include files for public site when posted
-            │ ├── css/
-            │ │ └── styles.css
-            │ ├── images/
-            │ │ └── logo.png
-            │ └── js/
-            │ └── app.js
-            │
-            ├── src/ 
-            │ └── index.js
-            │ └── style.scss
-            │
-            ├── views/ 
-            │ └── index.ejs
-            │
-            ├── .gitignore #include stuff you dont want to upload
-            ├── package.json 
-            ├── package-lock.json 
-            ├── .browserslistrc
-            ├── webpack.config.js
-          </code>
-        </pre>
+        <code>
+              root-folder/
+              │
+              ├── node_modules/ #generated
+              │
+              ├── public/ #should include files for public site when posted
+              │ ├── index.html
+              │ ├── images/
+              │ │ └── ?
+              │ └── js/
+              │   └── ?
+              │
+              ├── src/
+              │ └── index.js
+              │ └── style.scss
+              │
+              ├── package.json
+              ├── package-lock.json
+              ├── webpack.config.js
+        </code>
+      </pre>
     </section>
     <hr>
     <section>
@@ -78,6 +69,7 @@
         <code>
           import _ from 'lodash';
           import './style.scss'; // the scss file you are creating later
+          
           
           function component() {
           const element = document.createElement('div');
@@ -92,7 +84,8 @@
         </code>
       </pre>
       <p>
-        next we link our javascript file as a module in head.
+        next we link our javascript file as a module in head. with source <b>/dist/main.js</b>
+        <br>it would be generated later
         <br>we also need to change a few things in our package.json file
         <br>we need to replace <b>"main": "index.js",</b> with <b>"private": true,</b>
         <br>this is to prevent an accidental publish of your code
@@ -100,20 +93,27 @@
       <pre>
                 <code>
                   {
-                    "name": "webpack-demo",
-                    "version": "1.0.0",
-                    "description": "",
-                    "private": true,
-                    "scripts": {
-                      "test": "echo \"Error: no test specified\" && exit 1"
-                    },
-                    "keywords": [],
-                    "author": "John cena",
-                    "license": "MIT",
-                    "devDependencies": {
-                      "webpack": "^5.38.1",
-                      "webpack-cli": "^4.7.2"
-                    }
+                  "name": "name",
+                  "version": "1.0.0",
+                  "private": true,
+                  "scripts": {
+                  "test": "echo "Error: no test specified" && exit 1"
+                  },
+                  "keywords": [],
+                  "author": "",
+                  "license": "ISC",
+                  "description": "",
+                  "devDependencies": {
+                  "css-loader": "^7.1.2",
+                  "lodash": "^4.17.21",
+                  "mini-css-extract-plugin": "^2.9.1",
+                  "sass": "^1.80.3",
+                  "sass-loader": "^16.0.2",
+                  "style-loader": "^4.0.0",
+                  "webpack": "^5.95.0",
+                  "webpack-cli": "^5.1.4",
+                  "webpack-dev-server": "^5.1.0"
+                  }
                   }
                 </code>
                 
@@ -122,16 +122,16 @@
     <hr>
     <section>
       <h2>step 4 - dist generation</h2>
-      <p>go into your terminal again and type in this:
-        <br>this will generate your <b>dist/main.js</b> folder and make your <b>index.js</b> as your entry point
+      <p>go into your terminal again and type in the following:
+        <pre>
+          <code>
+            npx webpack
+          </code>
+        </pre>
       </p>
-      <pre>
-        <code>
-          npx webpack
-        </code>
-      </pre>
+      <p>this will generate your <b>dist/main.js</b> folder and make your <b>index.js</b> as your entry point</p>
       <p>
-        now open your <code>index.html</code> from the dist folder in your
+        now open your <code>index.html</code> from the public folder in your
         browser, you should see the following text: 'Hello webpack'
       </p>
     </section>
@@ -178,24 +178,28 @@
       </p>
       <pre><code>
                   {
-                    "name": "webpack-demo",
-                    "version": "1.0.0",
-                    "description": "",
-                    "private": true,
-                    "scripts": {
-                     "test": "echo \"Error: no test specified\" && exit 1", 
-                     "build": "webpack" 
-                    },
-                    "keywords": [],
-                    "author": "",
-                    "license": "ISC",
-                    "devDependencies": {
-                      "webpack": "^5.4.0",
-                      "webpack-cli": "^4.2.0"
-                    },
-                    "dependencies": {
-                      "lodash": "^4.17.20"
-                    }
+                  "name": "name",
+                  "version": "1.0.0",
+                  "private": true,
+                  "scripts": {
+                  "test": "echo "Error: no test specified" && exit 1",
+                  "build": "webpack"
+                  },
+                  "keywords": [],
+                  "author": "",
+                  "license": "ISC",
+                  "description": "",
+                  "devDependencies": {
+                  "css-loader": "^7.1.2",
+                  "lodash": "^4.17.21",
+                  "mini-css-extract-plugin": "^2.9.1",
+                  "sass": "^1.80.3",
+                  "sass-loader": "^16.0.2",
+                  "style-loader": "^4.0.0",
+                  "webpack": "^5.95.0",
+                  "webpack-cli": "^5.1.4",
+                  "webpack-dev-server": "^5.1.0"
+                  }
                   }
                 </code></pre>
       <p>
@@ -205,8 +209,14 @@
       <pre><code>
                   npm run build
                 </code></pre>
+      <p>we would add the following script too and use the <b>webpack-dev-server</b> with the following</p>
+      <pre>
+        <code>
+          
+        </code>
+      </pre>
     </section>
-
+    <hr>
     <section>
       <h2>Step 7. Loaders and source map</h2>
       <br>
@@ -265,6 +275,40 @@ module.exports = {
         </code>
       </pre>
       <p>now you can run your <b>'npm run build'</b> command again</p>
+    </section>
+    <section>
+      <h2>Final product - file structure</h2>
+      <pre>
+                    <code>
+                      root-folder/
+                      │
+                      ├── dist/
+                      │ └── #generated files
+                      │
+                      ├── node_modules/ #generated 
+                      │
+                      ├── public/ #should include files for public site when posted
+                      │ ├── css/
+                      │ │ └── styles.css
+                      │ ├── images/
+                      │ │ └── logo.png
+                      │ └── js/
+                      │ └── app.js
+                      │
+                      ├── src/ 
+                      │ └── index.js
+                      │ └── style.scss
+                      │
+                      ├── views/ 
+                      │ └── index.ejs
+                      │
+                      ├── .gitignore #include stuff you dont want to upload
+                      ├── package.json 
+                      ├── package-lock.json 
+                      ├── .browserslistrc
+                      ├── webpack.config.js
+                    </code>
+                  </pre>
     </section>
   </main>
 </body>
