@@ -1,16 +1,19 @@
 import _ from 'lodash';
-
-// Highligt.js
+import './style.scss';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
+import css from 'highlight.js/lib/languages/css';
+import 'highlight.js/styles/base16/bright.min.css'
+
+
 hljs.registerLanguage('javascript', javascript);
-// ---------
+hljs.registerLanguage('css', css);
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+    });
+});
 
-const highlightedCode = hljs.highlight(
-    '<span>Hello World!</span>',
-    { language: 'javascript' }
-).value
-
-// const headline = 'Made by Rasmus & Tobias';
-document.querySelector('#headline').innerHTML = highlightedCode
+const headline = 'Made by Rasmus & Tobias';
+document.querySelector('#headline').innerHTML = headline
