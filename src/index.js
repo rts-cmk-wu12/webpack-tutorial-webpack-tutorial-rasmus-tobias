@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import './style.scss';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import css from 'highlight.js/lib/languages/css';
@@ -10,7 +11,7 @@ hljs.registerLanguage('css', css);
 
 document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightBlock(block);
+        hljs.highlightElement(block);
     });
 });
 
