@@ -21515,6 +21515,75 @@ function javascript(hljs) {
 
 
 
+/***/ }),
+
+/***/ "./node_modules/highlight.js/es/languages/json.js":
+/*!********************************************************!*\
+  !*** ./node_modules/highlight.js/es/languages/json.js ***!
+  \********************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ json; }
+/* harmony export */ });
+/*
+Language: JSON
+Description: JSON (JavaScript Object Notation) is a lightweight data-interchange format.
+Author: Ivan Sagalaev <maniac@softwaremaniacs.org>
+Website: http://www.json.org
+Category: common, protocols, web
+*/
+
+function json(hljs) {
+  const ATTRIBUTE = {
+    className: 'attr',
+    begin: /"(\\.|[^\\"\r\n])*"(?=\s*:)/,
+    relevance: 1.01
+  };
+  const PUNCTUATION = {
+    match: /[{}[\],:]/,
+    className: "punctuation",
+    relevance: 0
+  };
+  const LITERALS = [
+    "true",
+    "false",
+    "null"
+  ];
+  // NOTE: normally we would rely on `keywords` for this but using a mode here allows us
+  // - to use the very tight `illegal: \S` rule later to flag any other character
+  // - as illegal indicating that despite looking like JSON we do not truly have
+  // - JSON and thus improve false-positively greatly since JSON will try and claim
+  // - all sorts of JSON looking stuff
+  const LITERALS_MODE = {
+    scope: "literal",
+    beginKeywords: LITERALS.join(" "),
+  };
+
+  return {
+    name: 'JSON',
+    aliases: ['jsonc'],
+    keywords:{
+      literal: LITERALS,
+    },
+    contains: [
+      ATTRIBUTE,
+      PUNCTUATION,
+      hljs.QUOTE_STRING_MODE,
+      LITERALS_MODE,
+      hljs.C_NUMBER_MODE,
+      hljs.C_LINE_COMMENT_MODE,
+      hljs.C_BLOCK_COMMENT_MODE
+    ],
+    illegal: '\\S'
+  };
+}
+
+
+
+
 /***/ })
 
 /******/ 	});
@@ -21622,8 +21691,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! highlight.js/lib/core */ "./node_modules/highlight.js/es/core.js");
 /* harmony import */ var highlight_js_lib_languages_javascript__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! highlight.js/lib/languages/javascript */ "./node_modules/highlight.js/es/languages/javascript.js");
-/* harmony import */ var highlight_js_lib_languages_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! highlight.js/lib/languages/css */ "./node_modules/highlight.js/es/languages/css.js");
-/* harmony import */ var highlight_js_styles_base16_bright_min_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! highlight.js/styles/base16/bright.min.css */ "./node_modules/highlight.js/styles/base16/bright.min.css");
+/* harmony import */ var highlight_js_lib_languages_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! highlight.js/lib/languages/json */ "./node_modules/highlight.js/es/languages/json.js");
+/* harmony import */ var highlight_js_lib_languages_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! highlight.js/lib/languages/css */ "./node_modules/highlight.js/es/languages/css.js");
+/* harmony import */ var highlight_js_styles_base16_bright_min_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! highlight.js/styles/base16/bright.min.css */ "./node_modules/highlight.js/styles/base16/bright.min.css");
+
 
 
 
@@ -21633,7 +21704,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_2__["default"].registerLanguage('javascript', highlight_js_lib_languages_javascript__WEBPACK_IMPORTED_MODULE_3__["default"]);
-highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_2__["default"].registerLanguage('css', highlight_js_lib_languages_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
+highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_2__["default"].registerLanguage('json', highlight_js_lib_languages_json__WEBPACK_IMPORTED_MODULE_4__["default"]);
+highlight_js_lib_core__WEBPACK_IMPORTED_MODULE_2__["default"].registerLanguage('css', highlight_js_lib_languages_css__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
 document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelectorAll('pre code').forEach((block) => {

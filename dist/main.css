@@ -549,18 +549,45 @@ video {
 }
 
 :root {
-  --mainBg: teal;
+  --mainBg: black;
 }
 
 body {
-  background-color: teal;
+  background-color: black;
   background-color: var(--mainBg);
-  color: moccasin;
+  color: whitesmoke;
+}
+
+hr {
+  border: 1px solid white;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+section {
+  width: 705px;
+}
+
+pre {
+  text-align: left;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 #headline {
-  -webkit-transform: rotate(10deg);
-  transform: rotate(10deg);
+  text-align: center;
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
   background-color: rgb(229, 231, 235);

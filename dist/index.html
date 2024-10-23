@@ -1,58 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="main.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <h1 id="headline">webpack tutorial</h1>
-        <section>
-            <div>
-                <h2>Step 1 - installation</h2>
-            </div>
-            <p>if you haven't installed node.js this would be a great time to do it!</p>
-            <p>put this into your console terminal to download the webpack</p>
-            <pre><code>
-                npm install --save-dev webpack webpack-cli
-              </code></pre>
-            <pre><code>
-                npm init -y
-              </code></pre>
-              <p>we type -y so that it auto accepts for us</p>
-              <pre><code>
-                npm install --save lodash
-              </code></pre>
-        </section>
+      <!-- <h1 id="headline">webpack tutorial</h1>
+      <section>
+        <h2>Step 1 - installation</h2>
+        <p>
+          if you haven't installed node.js this would be a great time to do it!
+        </p>
+        <p>put this into your console terminal to download the webpack</p>
+        <pre>
+          <code>
+            npm install --save-dev webpack webpack-cli
+          </code>
+        </pre>
 
-        <section>
-            <div>
-                <h2>Step 2 - file structure</h2>
-                <p>add your index.html file and a /src/index.js file</p>
-                <p>next we add these lines of code into our index.js</p>
-                <pre><code>
+        <pre>
+          <code>
+            npm init -y
+          </code>
+        </pre>
+        <p>we type -y so that it auto accepts for us</p>
+        <pre>
+          <code>
+            npm install --save lodash
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h2>Step 2 - file structure</h2>
+        <p>add your index.html file and a /src/index.js file</p>
+        <p>next we add these lines of code into our index.js</p>
+        <pre>
+          <code>
             import _ from 'lodash';
-
+            
             function component() {
             const element = document.createElement('div');
-
-         // Lodash, now imported by this script
+            
+            // Lodash, now imported by this script
             element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
+            
             return element;
             }
-
+            
             document.body.appendChild(component());
-          </code></pre>
-                <p>next we add our javascript link into head or at the bottom of our body - more will be explained later</p>
-                <code>/main.js</code>
-
-                <p>we also need to change a few things in our package.json file </p>
-                <pre><code>
+          </code>
+        </pre>
+        <p>
+          next we add our javascript link into head or at the bottom of our body
+          - more will be explained later
+        </p>
+        <p>we also need to change a few things in our package.json file</p>
+        <pre><code>
             {
               "name": "webpack-demo",
               "version": "1.0.0",
@@ -71,30 +80,34 @@
               }
             }
           </code></pre>
-                <p>this is to prevent an accidental publish of your code</p>
-            </div>
-        </section>
+        <p>this is to prevent an accidental publish of your code</p>
+      </section>
 
-        <section>
-            <div>
-              <h2>step 3 - dist generation</h2>
-              <p>go into your terminal again and type in this:</p>
-              <pre><code>
+      <section>
+        <h2>step 3 - dist generation</h2>
+        <p>go into your terminal again and type in this:</p>
+        <pre><code>
                   npx webpack
                 </code></pre>
-              <p>this will generate your <code>dist/main.js</code> folder and make your <code>index.js</code> as your entry
-                point</p>
-              <p>now open your <code>index.html</code> from the dist folder in your browser, you should see the following
-                text: 'Hello webpack'</p>
-            </div>
-          </section>
+        <p>
+          this will generate your <code>dist/main.js</code> folder and make your
+          <code>index.js</code> as your entry point
+        </p>
+        <p>
+          now open your <code>index.html</code> from the dist folder in your
+          browser, you should see the following text: 'Hello webpack'
+        </p>
+      </section>
 
-          <section>
-            <div>
-              <h2>Step 4 - configuration</h2>
-              <p>As of version 4, webpack doesn't require any configuration, but most projects will require a more complex
-                setup - add a <code>webpack.config.js</code> file, and put this code into it:</p>
-              <pre><code>
+      <section>
+        <h2>Step 4 - configuration</h2>
+        <p>
+          As of version 4, webpack doesn't require any configuration, but most
+          projects will require a more complex setup - add a
+          <code>webpack.config.js</code> file, and put this code into it:
+        </p>
+        <pre>
+          <code>
                   const path = require('path');
       
                   module.exports = {
@@ -104,21 +117,26 @@
                       path: path.resolve(__dirname, 'dist'),
                     },
                   };
-                </code></pre>
-              <p>now we run the build again using our configuration</p>
-              <pre><code>
+          </code>
+        </pre>
+        <p>now we run the build again using our configuration</p>
+        <pre><code>
                   npx webpack --config webpack.config.js
                 </code></pre>
-            </div>
-          </section>
-          
-          <section>
-            <div>
-              <h2>step 5 NPM scripts</h2>
-              <p>Given it's not particularly fun to run a local copy of webpack from the CLI, we can set up a little shortcut.
-                Let's adjust our package.json by adding an npm script:</p>
-              <p>if you already have a scripts tag in your package, simply modify as shown</p>
-              <pre><code>
+      </section>
+
+      <section>
+        <h2>step 5 NPM scripts</h2>
+        <p>
+          Given it's not particularly fun to run a local copy of webpack from
+          the CLI, we can set up a little shortcut. Let's adjust our
+          package.json by adding an npm script:
+        </p>
+        <p>
+          if you already have a scripts tag in your package, simply modify as
+          shown
+        </p>
+        <pre><code>
                   {
                     "name": "webpack-demo",
                     "version": "1.0.0",
@@ -140,63 +158,65 @@
                     }
                   }
                 </code></pre>
-              <p>now the <code>npm run build</code> command in the terminal can be used in place of <code>npx</code> we used
-                earlier</p>
-              <pre><code>
+        <p>
+          now the <code>npm run build</code> command in the terminal can be used
+          in place of <code>npx</code> we used earlier
+        </p>
+        <pre><code>
                   npm run build
                 </code></pre>
-            </div>
-            
-          </section>
-          <section>
-            <div><h2>SCSS-loaders and source map</h2></div>
-            <h2>step 1 sass-loader</h2>
-            <p>we start off by installing the css-loader and sass-loader</p>
-            <pre><code>
+      </section>
+      <hr />
+      <section>
+        <h2>SCSS-loaders and source map</h2>
+
+        <h2>step 1 sass-loader</h2>
+        <p>we start off by installing the css-loader and sass-loader</p>
+        <pre><code>
               npm install --save-dev style-loader css-loader
               npm install --save-dev sass-loader sass webpack
             </code></pre>
-            <p>we then add the import to our configuration</p>
-            <p>js</p>
-            <pre><code>
+        <p>we then add the import to our configuration</p>
+        <p>js</p>
+        <pre><code>
               import "./style.scss";
             </code></pre>
-            <p>style</p>
-            <pre><code>
+        <p>style</p>
+        <pre><code>
               $body-color: red;
               body {
                 color: $body-color;
               }
             </code></pre>
-            <p>webpack.config.js</p>
-            <pre><code>
-              const path = require('path');
-
-                module.exports = {
-                entry: './src/index.js',
-                output: {
-                    filename: 'main.js',
-                    path: path.resolve(__dirname, 'dist'),
-                },
-                module: {
-                    rules: [
-                        {
-                            test: /\.(css|scss|sass)$/i,
-                            use: ['style-loader', 'css-loader', 'sass-loader'],
-                        },
-                    ],
-                },
-            };
+        <p>webpack.config.js</p>
+        <pre><code>
+const path = require('path');
+      
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(css|scss|sass)$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+        ],
+    },
+};
           </code></pre>
-            <p>add a style.css to your /src</p>
-            <p>add import to css in your index.js</p>
-            <pre><code>
+        <p>add a style.css to your /src</p>
+        <p>add import to css in your index.js</p>
+        <pre><code>
               import './style.css';
             </code></pre>
-            <p>now you can run your 'npm run build' command again</p>
-          </section>
-          
-    </main>
-</body>
+        <p>now you can run your 'npm run build' command again</p>
+      </section> -->
+      
+    </main> 
 
+  </body>
 </html>
