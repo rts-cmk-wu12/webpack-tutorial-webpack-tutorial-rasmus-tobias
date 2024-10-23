@@ -10,7 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "mini-css-extract-plugin": "^2.9.1",
@@ -27,5 +26,7 @@
   "dependencies": {
     "highlight.js": "^11.10.0",
     "lodash": "^4.17.21"
-  }
+  },
+  "main": "webpack.config.js",
+  "description": ""
 }
