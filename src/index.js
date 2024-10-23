@@ -2,11 +2,13 @@ import _ from 'lodash';
 import './style.scss';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
 import css from 'highlight.js/lib/languages/css';
 import 'highlight.js/styles/base16/bright.min.css'
 
 
 hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('json', json);
 hljs.registerLanguage('css', css);
 
 document.addEventListener('DOMContentLoaded', (event) => {

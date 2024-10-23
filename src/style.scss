@@ -3,17 +3,32 @@
 @tailwind utilities;
 
 :root {
-    --mainBg: teal;
+    --mainBg: black;
 }
-
-$light-text: moccasin;
 
 body{
     background-color: var(--mainBg);
-    color: $light-text;
+    color: whitesmoke;
 };
 
+hr{
+    border: 1px solid white;
+    width: 100%;
+    margin-block: 10px;
+}
+
+section{
+    width: 705px;
+}
+pre{
+    text-align: left;
+}
+main{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
 #headline{
-    transform: rotate(10deg);
+    text-align: center;
     @apply px-4 py-2 rounded font-semibold bg-gray-200 text-black;
 }
